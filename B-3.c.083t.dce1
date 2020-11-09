@@ -1,0 +1,30 @@
+
+;; Function main (main, funcdef_no=13, decl_uid=2572, cgraph_uid=13, symbol_order=13) (executed once)
+
+Merging blocks 2 and 6
+Merging blocks 3 and 4
+main ()
+{
+  int b;
+  int a;
+
+  <bb 2>:
+
+  <bb 3>:
+  # a_2 = PHI <a_7(3), 4(2)>
+  # b_5 = PHI <b_6(3), b_4(D)(2)>
+  b_6 = b_5 * 2;
+  a_7 = a_2 + 1;
+  if (a_7 != 100)
+    goto <bb 3>;
+  else
+    goto <bb 4>;
+
+  <bb 4>:
+  # b_11 = PHI <b_6(3)>
+  printf ("%d%d", 100, b_11);
+  return 0;
+
+}
+
+
