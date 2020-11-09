@@ -1,32 +1,47 @@
----------------------
-B-1 Function Inlining
----------------------
+------------------------------------
+B-4 Common Subexpression Elimination
+------------------------------------
+
 
 main ()                                 |main ()                                
 {                                       |{                                      
-  int x;                                |  int D.1598;                          
-  int D.1591;                           |  int a;                               
-                                        |  int x;                               
-<bb 2>:                                 |  int D.1591;                          
-  x_1 = 3;                              |                                       
-  x_2 = AddTwo (x_1);                   |<bb 2>:                                
-  D.1591_3 = x_2;                       |  x_1 = 3;                             
-  return D.1591_3;                      |  a_4 = x_1 + 2;                       
-                                        |  D.1598_5 = a_4;                      
-}                                       |  x_2 = D.1598_5;                      
-                                        |  D.1591_3 = x_2;                      
-                                        |  return D.1591_3;                     
+  int c;                                |  int c;                               
+  int b;                                |  int b;                               
+  int a;                                |  int a;                               
+  int D.1592;                           |  int D.1591;                          
+  int D.1591;                           |  int D.1590;                          
+  int D.1590;                           |                                       
+                                        |<bb 2>:                                
+<bb 2>:                                 |  D.1590_3 = a_1(D) + c_2(D);          
+  D.1590_3 = a_1(D) + c_2(D);           |  D.1591_5 = D.1590_3 + b_4(D);        
+  D.1591_5 = D.1590_3 + b_4(D);         |  D.1590_6 = D.1590_3;                 
+  D.1590_6 = c_2(D) + a_1(D);           |  b_7 = D.1591_5 * D.1590_6;           
+  b_7 = D.1591_5 * D.1590_6;            |  return b_7;                          
+  D.1592_8 = b_7;                       |                                       
+  return D.1592_8;                      |}                                      
                                         |                                       
-                                        |}               
+}                                       |                           
 
-Solutions
----------
+Solution
+--------
 
-        1   The function body exists because it may be called from another file.
-            The compiler cannot know about this before link time.
+        1 - The original code showed two computations, but the FRE pass was able to  reuse the  temporary variable 
+             which  stored the  result of  the intitial computation  of (a +  c).
 
-        2   If the function was declared with the "static" keyword (which, in C,
-            is something  like "private  to this file  only") then  the function
-            body will disappear if there is no caller within the file.
+          - Thus,  one line of  execution wassaved, and so was the use of an extra variable.
 
-    
+            
+        2   Check  the   file  B-4.c.*.optimized.   This  is  the   last  GIMPLE
+            intra-procedural pass. If  it is same as the output  of FRE, then no
+            more optimizations have occured.
+
+        3   "return  b" was  required to  make the  computation of  variable `b'
+            meaningful. If function  `main' is going to "return 0"  and there is
+            no other  output, GCC  will realise that  the entire  computation of
+            variable `b' was  dead code and will eliminate  its dependencies one
+            by one until the resulting program reduces to:
+        
+                int main()
+                {
+                    return 0;
+                }

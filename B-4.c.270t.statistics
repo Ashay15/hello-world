@@ -1,0 +1,6 @@
+40 fre "Eliminated" "main" 1
+50 release_ssa "SSA names released" "main" 2
+50 release_ssa "SSA name holes removed" "main" 2
+113 pre "compute_antic iterations == 1" "main" 1
+113 pre "insert iterations == 1" "main" 1
+226 combine "two-insn combine" "main" 3
