@@ -1,0 +1,62 @@
+
+;; Function main (main, funcdef_no=0, decl_uid=1833, cgraph_uid=0, symbol_order=1) (executed once)
+
+;; 2 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2
+;; 2 succs { 1 }
+
+Value ranges after VRP:
+
+a_1: VARYING
+_4: VARYING
+a_5: VARYING
+i_6: [4, 4]
+ivtmp_7: [0, 0]
+pretmp_8: VARYING
+_9: [a_15, a_15]  EQUIVALENCES: { a_15 } (1 elements)
+a_15: VARYING
+i_16: [1, 1]
+ivtmp_17: [3, 3]
+a_21: VARYING
+i_22: [2, 2]
+a_27: VARYING
+i_28: [3, 3]
+ivtmp_29: [1, 1]
+
+
+main ()
+{
+  int a;
+  int i;
+  int _4;
+  unsigned int ivtmp_7;
+  int pretmp_8;
+  int _9;
+  unsigned int ivtmp_17;
+  unsigned int ivtmp_29;
+
+  <bb 2>:
+  pretmp_8 = N;
+  a_15 = pretmp_8 + 10;
+  i_16 = 1;
+  ivtmp_17 = 3;
+  a_21 = pretmp_8 + a_15;
+  i_22 = 2;
+  a_27 = pretmp_8 + a_21;
+  i_28 = 3;
+  ivtmp_29 = 1;
+  a_5 = pretmp_8 + a_27;
+  i_6 = 4;
+  ivtmp_7 = 0;
+  _9 = a_15;
+  _4 = pretmp_8 * 3;
+  a_1 = _4 + a_15;
+  return a_1;
+
+}
+
+

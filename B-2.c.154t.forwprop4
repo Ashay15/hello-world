@@ -1,0 +1,20 @@
+
+;; Function main (main, funcdef_no=0, decl_uid=1833, cgraph_uid=0, symbol_order=1) (executed once)
+
+main ()
+{
+  int a;
+  int i;
+  int _4;
+  int pretmp_8;
+
+  <bb 2>:
+  pretmp_8 = N;
+  a_15 = pretmp_8 + 10;
+  _4 = pretmp_8 * 3;
+  a_1 = _4 + a_15;
+  return a_1;
+
+}
+
+

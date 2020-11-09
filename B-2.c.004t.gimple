@@ -1,0 +1,27 @@
+main ()
+{
+  int N.0;
+  int D.1842;
+
+  {
+    int i;
+    int a;
+
+    a = 10;
+    i = 0;
+    goto <D.1838>;
+    <D.1837>:
+    N.0 = N;
+    a = a + N.0;
+    i = i + 1;
+    <D.1838>:
+    if (i <= 3) goto <D.1837>; else goto <D.1839>;
+    <D.1839>:
+    D.1842 = a;
+    return D.1842;
+  }
+  D.1842 = 0;
+  return D.1842;
+}
+
+

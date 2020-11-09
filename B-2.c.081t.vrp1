@@ -1,0 +1,103 @@
+
+;; Function main (main, funcdef_no=0, decl_uid=1833, cgraph_uid=0, symbol_order=1) (executed once)
+
+;; 2 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2 3 4 5
+;;
+;; Loop 1
+;;  header 4, latch 3
+;;  depth 1, outer 0
+;;  nodes: 4 3
+;; 2 succs { 4 }
+;; 3 succs { 4 }
+;; 4 succs { 3 5 }
+;; 5 succs { 1 }
+
+SSA replacement table
+N_i -> { O_1 ... O_j } means that N_i replaces O_1, ..., O_j
+
+a_7 -> { a_2 }
+Incremental SSA update started at block: 4
+Number of blocks in CFG: 6
+Number of blocks to update: 3 ( 50%)
+
+
+
+SSA replacement table
+N_i -> { O_1 ... O_j } means that N_i replaces O_1, ..., O_j
+
+i_8 -> { i_1 }
+Incremental SSA update started at block: 4
+Number of blocks in CFG: 6
+Number of blocks to update: 2 ( 33%)
+
+
+
+Value ranges after VRP:
+
+i_1: [0, 4]
+a_2: VARYING
+N.0_4: VARYING
+a_5: VARYING
+i_6: [1, 4]
+a_7: [a_2, a_2]
+i_8: [0, 3]  EQUIVALENCES: { i_1 } (1 elements)
+
+
+Simplified relational if (i_1 <= 3)
+ into if (i_1 != 4)
+
+Removing basic block 3
+
+SSA replacement table
+N_i -> { O_1 ... O_j } means that N_i replaces O_1, ..., O_j
+
+i_8 -> { i_1 }
+a_9 -> { a_2 }
+i_10 -> { i_1 }
+a_11 -> { a_2 }
+Incremental SSA update started at block: 6
+Number of blocks in CFG: 7
+Number of blocks to update: 4 ( 57%)
+
+
+main ()
+{
+  int a;
+  int i;
+  int N.0_4;
+
+  <bb 2>:
+  goto <bb 6>;
+
+  <bb 3>:
+  # i_10 = PHI <i_1(4), i_8(6)>
+  # a_11 = PHI <a_2(4), a_9(6)>
+  N.0_4 = N;
+  a_5 = a_11 + N.0_4;
+  i_6 = i_10 + 1;
+
+  <bb 4>:
+  # i_1 = PHI <i_6(3)>
+  # a_2 = PHI <a_5(3)>
+  if (i_1 != 4)
+    goto <bb 3>;
+  else
+    goto <bb 5>;
+
+  <bb 5>:
+  # a_7 = PHI <a_2(4)>
+  return a_7;
+
+  <bb 6>:
+  # i_8 = PHI <0(2)>
+  # a_9 = PHI <10(2)>
+  goto <bb 3>;
+
+}
+
+

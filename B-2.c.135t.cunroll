@@ -1,0 +1,77 @@
+
+;; Function main (main, funcdef_no=0, decl_uid=1833, cgraph_uid=0, symbol_order=1) (executed once)
+
+Removing basic block 12
+Removing basic block 13
+Removing basic block 14
+
+SSA replacement table
+N_i -> { O_1 ... O_j } means that N_i replaces O_1, ..., O_j
+
+i_12 -> { i_10 }
+a_13 -> { a_11 }
+ivtmp_14 -> { ivtmp_2 }
+a_15 -> { a_5 }
+i_16 -> { i_6 }
+ivtmp_17 -> { ivtmp_7 }
+i_18 -> { i_10 }
+a_19 -> { a_11 }
+ivtmp_20 -> { ivtmp_2 }
+a_21 -> { a_5 }
+i_22 -> { i_6 }
+ivtmp_23 -> { ivtmp_7 }
+i_24 -> { i_10 }
+a_25 -> { a_11 }
+ivtmp_26 -> { ivtmp_2 }
+a_27 -> { a_5 }
+i_28 -> { i_6 }
+ivtmp_29 -> { ivtmp_7 }
+Incremental SSA update started at block: 6
+Number of blocks in CFG: 16
+Number of blocks to update: 7 ( 44%)
+
+
+Merging blocks 2 and 6
+Removing basic block 15
+Removing basic block 4
+Removing basic block 7
+Removing basic block 9
+Removing basic block 11
+Merging blocks 2 and 8
+Merging blocks 2 and 10
+Merging blocks 2 and 3
+Merging blocks 2 and 5
+main ()
+{
+  int a;
+  int i;
+  int _4;
+  unsigned int ivtmp_7;
+  int pretmp_8;
+  int _9;
+  unsigned int ivtmp_17;
+  unsigned int ivtmp_23;
+  unsigned int ivtmp_29;
+
+  <bb 2>:
+  pretmp_8 = N;
+  a_15 = pretmp_8 + 10;
+  i_16 = 1;
+  ivtmp_17 = 3;
+  a_21 = pretmp_8 + a_15;
+  i_22 = i_16 + 1;
+  ivtmp_23 = ivtmp_17 + 4294967295;
+  a_27 = pretmp_8 + a_21;
+  i_28 = i_22 + 1;
+  ivtmp_29 = ivtmp_23 + 4294967295;
+  a_5 = pretmp_8 + a_27;
+  i_6 = i_28 + 1;
+  ivtmp_7 = ivtmp_29 + 4294967295;
+  _9 = pretmp_8 + 10;
+  _4 = pretmp_8 * 3;
+  a_1 = _9 + _4;
+  return a_1;
+
+}
+
+
